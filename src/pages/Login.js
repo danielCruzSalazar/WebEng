@@ -6,6 +6,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const [teams, setKeys] = useState([]);
@@ -35,7 +36,12 @@ const Login = () => {
       .then(res => {
         if (res.data.validation) {
 
-          alert('Contraseña correcta, Bienvenid@!')
+          //alert('Contraseña correcta, Bienvenid@!')
+          Swal.fire({
+            icon: 'success',
+            title: 'Login Existoso!',
+            text: 'Puedes cerrar esta ventana',
+          });
           if (username === "kenia.picos@cetys.mx") {
             navigate('/eventos/expo-ingenierias/votacion/votacion-kn');
           } else if (username === "ulises.orozco@cetys.mx") {
@@ -73,8 +79,12 @@ const Login = () => {
           }
 
         } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'ERROR',
+            text: 'Contraseña incorrecta. Por favor, intenta de nuevo',
+          });
 
-          alert('Contraseña incorrecta. Por favor, intenta de nuevo')
         }
 
       })

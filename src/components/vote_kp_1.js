@@ -8,6 +8,7 @@ export const Voting_kp2 = () => {
     const [teams, setTeams] = useState([]);
     const [loading, setLoading] = useState(true);
     const tableRef = useRef(null);
+    const [totalItems, setTotalItems] = useState(0);
 
 
 
@@ -60,8 +61,8 @@ export const Voting_kp2 = () => {
             .then(response => {
                 setTeams(response.data);
                 setSelectedValues(Array.from({ length: response.data.length }, () => 0));
-
                 setLoading(false);
+                setTotalItems(response.data.length);
             })
             .catch(error => console.error(`There was an error retrieving the team list: ${error}`));
     };
@@ -91,8 +92,8 @@ export const Voting_kp2 = () => {
             return;
         }
 
-        for (let i = 0; i <= 8; i++) {
-            const points = selectedValues[i];
+        for (let i = 0; i <= totalItems; i++) {
+            const points = selectedValues[i] !== null ? selectedValues[i] : 0;
             const teamName = teams[i]?.name;
 
             postData.push({

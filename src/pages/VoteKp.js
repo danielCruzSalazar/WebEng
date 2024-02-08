@@ -9,6 +9,7 @@ export const Voting_kp = () => {
   const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(true);
   const tableRef = useRef(null);
+  const [totalItems, setTotalItems] = useState(0);
 
 
   const [selectedValues, setSelectedValues] = useState({
@@ -56,12 +57,11 @@ export const Voting_kp = () => {
       .then(response => {
         setTeams(response.data);
         setSelectedValues(Array.from({ length: response.data.length }, () => 0));
-        setLoading(false)
+        setLoading(false);
+        setTotalItems(response.data.length);
       })
       .catch(error => console.error(`There was an error retrieving the team list: ${error}`));
   }
-
-
 
 
   const fetchTeams2 = async () => {
@@ -92,7 +92,7 @@ export const Voting_kp = () => {
       return;
     }
 
-    for (let i = 0; i <= 10; i++) {
+    for (let i = 0; i <= totalItems; i++) {
       const points = selectedValues[i] !== null ? selectedValues[i] : 0;
       const teamName = teams[i]?.name;
 
@@ -200,7 +200,7 @@ export const Voting_kp = () => {
               </tbody>
             </table>
           
-
+q
             {!formSubmitted && (
               <button
                 className="mt-3 mb-3"

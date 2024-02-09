@@ -90,8 +90,8 @@ export const VotingBj = () => {
             return;
         }
 
-        for (let i = 0; i <= 8; i++) {
-            const points = selectedValues[i];
+        for (let i = 0; i <= totalItems; i++) {
+            const points = selectedValues[i] !== null ? selectedValues[i] : 0;
             const teamName = teams[i]?.name;
 
             postData.push({

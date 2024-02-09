@@ -200,7 +200,6 @@ export const Voting_kp = () => {
               </tbody>
             </table>
           
-q
             {!formSubmitted && (
               <button
                 className="mt-3 mb-3"

@@ -9,9 +9,8 @@ export const Voting_kp2 = () => {
     const [loading, setLoading] = useState(true);
     const tableRef = useRef(null);
     const [totalItems, setTotalItems] = useState(0);
-
-
-
+    
+    
     const [selectedValues, setSelectedValues] = useState({
 
     });

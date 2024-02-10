@@ -9,7 +9,7 @@ function App() {
     <div className="App">
     <PrincipalNavBarDropdown/>
       <header className="App-header"> </header>
-      <ContactSection />
+      {/* <ContactSection className="hidden"/> */}
     </div>
   );
 }

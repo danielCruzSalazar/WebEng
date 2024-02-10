@@ -26,14 +26,14 @@ import VotingBjs from './pages/VoteBf'
 import VotingMg from './pages/VoteMg'
 import VotingGg from './pages/VoteGg'
 import VotingMs from './pages/VoteMs'
-
+import NoRegister from './pages/Error-pages/U_cant_register'
 
 function PrincipalNavBarDropdown() {
   return (
     <Router>
       <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="/">
+          <Navbar.Brand href="/eventos/expo-ingenierias">
             <img className="d-inline-block align-top"
               src="./cetys-logo.png" alt="logo"
               width="70" height="60"
@@ -93,6 +93,7 @@ function PrincipalNavBarDropdown() {
           <Route path="/eventos/expo-ingenierias/votacion/votacion-mg" element={<VotingMg />} />
           <Route path="/eventos/expo-ingenierias/votacion/votacion-gg" element={<VotingGg />} />
           <Route path="/eventos/expo-ingenierias/votacion/votacion-ms" element={<VotingMs />} />
+          <Route path="/eventos/expo-ingenierias/registro" element={<NoRegister />} />
         </Routes>
       </div>
     </Router>

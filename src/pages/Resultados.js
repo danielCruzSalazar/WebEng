@@ -9,6 +9,7 @@ import Results_IA from "../components/results_ia"
 import Results_MT from '../components/results_mt'
 import Results_Poster from '../components/results_poster'
 import Results_SYS from '../components/results_sys'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 export const Resultados = () => {
   
@@ -16,8 +17,9 @@ export const Resultados = () => {
 
   return (
     
-   
-    <Container>
+    
+    <Container className="p-2">
+        <h1 className="p-3 fw-semibold">RESULTADOS DE LA VOTACION</h1>
         <Results_pda></Results_pda>
         <Results_cl></Results_cl>
         <Results_fyq></Results_fyq>

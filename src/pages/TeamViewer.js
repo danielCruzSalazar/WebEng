@@ -31,7 +31,7 @@ export const TeamViewer = () => {
 
   const fetchTeams = async () => {
     axios
-      .get('https://expoingapi.cetys.net/teams/all') // Replace with your actual API endpoint
+      .get('http://localhost:4001/teams/all') // Replace with your actual API endpoint
       .then(response => {
         setTeams(response.data);
         setLoading(false);
@@ -43,19 +43,19 @@ export const TeamViewer = () => {
     <Container>
    
     <div>
-      <h1>Team Information</h1>
+      <h1>Informacion de los Equipos</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
         <table ref={tableRef} class="table table-striped table-bordered dataTable">
           <thead class="table-dark">
             <tr>
-              <th>Team Name</th>
-              <th>Category</th>
-              <th>Modality</th>
-              <th>Members</th>
-              <th>Description</th>
-              <th>Classes</th>
+              <th>Nombre del equipo</th>
+              <th>Categoria</th>
+              <th>Modalidad</th>
+              <th>Integrantes</th>
+              <th>Descripcion</th>
+              <th>Clases</th>
             </tr>
           </thead>
           <tbody>

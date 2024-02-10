@@ -34,7 +34,7 @@ export const Results_pda = () => {
 
   const fetchTeams = async () => {
     axios
-      .get("https://expoingapi.cetys.net/teams/all-votes-table",{
+      .get("http://localhost:4001/teams/all-votes-table",{
         params: {
             table: "votes_métodosnuméricos"
         }
@@ -53,7 +53,7 @@ export const Results_pda = () => {
    
     <Container>
         <div>
-        <h2 class="text-center m-auto mb-3">PROYECTOS DE APLICACIÓN</h2>
+        <h2 class="text-center m-auto mb-3">Proyectos de aplicacion</h2>
         {loading ? (
             <p>Loading...</p>
         ):(

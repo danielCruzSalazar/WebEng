@@ -6,6 +6,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const [teams, setKeys] = useState([]);
@@ -19,7 +20,7 @@ const Login = () => {
 
   const fetchKeys = async () => {
     axios
-      .get("https://expoingapi.cetys.net/teams/all-keys")
+      .get("http://localhost:4001/teams/all-keys")
       .then((response) => {
         setKeys(response.data);
         setLoading(false);
@@ -31,11 +32,16 @@ const Login = () => {
 
   const onFinish = values => {
     const { username, password } = values
-    axios.post("https://expoingapi.cetys.net/teams/validatePassword", { username, password })
+    axios.post("http://localhost:4001/teams/validatePassword", { username, password })
       .then(res => {
         if (res.data.validation) {
 
-          alert('Contraseña correcta, Bienvenid@!')
+          //alert('Contraseña correcta, Bienvenid@!')
+          Swal.fire({
+            icon: 'success',
+            title: 'Login Existoso!',
+            text: 'Puedes cerrar esta ventana',
+          });
           if (username === "kenia.picos@cetys.mx") {
             navigate('/eventos/expo-ingenierias/votacion/votacion-kn');
           } else if (username === "ulises.orozco@cetys.mx") {
@@ -69,12 +75,16 @@ const Login = () => {
           }
 
           else {
-            navigate('/eventos/expo-ingenierias');
+            navigate('/eventos/expo-ingenierias/votacion/error');
           }
 
         } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'ERROR',
+            text: 'Contraseña incorrecta. Por favor, intenta de nuevo',
+          });
 
-          alert('Contraseña incorrecta. Por favor, intenta de nuevo')
         }
 
       })
@@ -130,10 +140,10 @@ const Login = () => {
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button ">
+            <Button type="primary" htmlType="submit" className="login-form-button mb-3">
               Log in
             </Button>
-            Or <a href="./PageNotFound.html" >Registrate!</a>
+            Or <a href="./eventos/expo-ingenierias/registro" >Registrate!</a>
           </Form.Item>
         </Form>
       </div>

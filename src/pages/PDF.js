@@ -57,12 +57,12 @@ function PDFViewer() {
             const formData = new FormData();
             formData.append('pdfFile', pdfFile);
       
-            // Replace 'YOUR_BACKEND_ENDPOINT' with your actual backend endpoint
-            const response = await axios.post('YOUR_BACKEND_ENDPOINT/uploadPdf', formData, {
-              headers: {
-                'Content-Type': 'multipart/form-data'
-              }
-            });
+            const response = await axios.post('http://localhost:4001/uploadPdf', formData, {
+                headers: {
+                  'Content-Type': 'multipart/form-data'
+                }
+              });
+              
       
             // Handle response from the server if needed
             console.log('PDF Uploaded!', response.data);
@@ -96,9 +96,7 @@ function PDFViewer() {
                 la misma version ambos para que corra correctamente, aqui ↓ se le puede modificar la 
                 version al pdfjs-dist para que sea la misma que la de la api que el mensaje de error arroje. */}
                 {viewPdf&&<><Worker workerUrl="https://unpkg.com/pdfjs-dist/build/pdf.worker.min.js">
-                    <Viewer fileUrl={viewPdf}
-                        plugins={[defaultLayoutPluginInstance]}/>
-                    </Worker></>}
+                    <Viewer fileUrl={viewPdf} plugins={[defaultLayoutPluginInstance]}/></Worker></>}
 
                     {!viewPdf&&<>No PDF File Selected</>}
             </div>

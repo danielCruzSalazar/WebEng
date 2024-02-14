@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import EXPOIng from './pages/EXPO-Ingenieria';
 import Laboratorio from './pages/Laboratorio';
+import Post from './pages/Posting';
 import Conocenos from './pages/Conocenos';
 import Layout from './pages/Layout.js';
 import Login from './pages/Login';
@@ -54,6 +55,7 @@ function PrincipalNavBarDropdown() {
                 {/* <NavDropdown.Item href="#eventos/3.2"> Evento 2</NavDropdown.Item>
               <NavDropdown.Item href="#eventos/3.3"> Evento 3</NavDropdown.Item> */}
               </NavDropdown>
+              <Nav.Link as={Link} to={"/PDF"}>PDF</Nav.Link>
               <Nav.Link as={Link} to={"/laboratorio"}>LABORATORIO</Nav.Link>
 
               {/* <Nav.Link as={Link} to={"/post"}>POST</Nav.Link> */}
@@ -74,6 +76,7 @@ function PrincipalNavBarDropdown() {
           <Route path="/conocenos" element={<Conocenos />} />
           <Route path="/eventos/expo-ingenierias" element={<EXPOIng />} />
           <Route path="/laboratorio" element={<Laboratorio />} />
+          <Route path="/PDF" element={<Post />} />
           <Route path="/eventos/expo-ingenierias/layout" element={<Layout />} />
           <Route path="/eventos/expo-ingenierias/votacion-resultados" element={<Results />} />
           <Route path="/user-login" element={<Login />} />

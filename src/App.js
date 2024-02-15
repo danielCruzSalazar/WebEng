@@ -7,9 +7,10 @@ import ContactSection from "./pages/ContactSection.js";
 function App() {
   return (
     <div className="App">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></link>
     <PrincipalNavBarDropdown/>
       <header className="App-header"> </header>
-      {/* <ContactSection className="hidden"/> */}
+      <ContactSection className="hidden"/>
     </div>
   );
 }

@@ -93,18 +93,26 @@ const Login = () => {
 
   return (
 
-    <div class="d-flex justify-content-center align-items-center">
-
-      <div class="w-400">
-        <h1 class="text-align-cetner mt-3">Login</h1>
+    <main class="form-signin w-400 m-100">
+      <div>
+        <img className="d-inline-block align-top m-3"
+                src="../logoCetysNvo.jpg"
+                alt="User Profile"
+                width="162"
+                height="142"
+              />
+      </div>
+      
+        
         <Form
           name="normal_login"
-          className="login-form mt-3"
+          className="login-form bg-dark d-inline-block align-center col-md-7 col-lg-8 p-5"
           initialValues={{
             remember: true,
           }}
           onFinish={onFinish}
         >
+          <h1 class="text-align-center mt-1 mb-5 text-white fw-semibold fs-3">Iniciar Sesión</h1>
           <Form.Item
             name="username"
             rules={[
@@ -133,21 +141,24 @@ const Login = () => {
           </Form.Item>
           <Form.Item>
             <Form.Item name="remember" valuePropName="checked" noStyle>
-              <Checkbox>Remember me</Checkbox>
+              <Checkbox className="text-white">Recordar cuenta</Checkbox>
             </Form.Item>
 
 
           </Form.Item>
 
-          <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button mb-3">
-              Log in
+          <Form.Item className="mt-5">
+            <Button type="button" htmlType="submit" className="fw-semibold login-form-button btn btn-warning mb-3 fs-6">
+            Iniciar Sesión
             </Button>
-            Or <a href="./eventos/expo-ingenierias/registro" >Registrate!</a>
+            <Button type="button" className="fw-semibold login-form-button btn btn-danger mb-3 fs-6 mt-3">
+            Cerrar Sesión
+            </Button>
+            
           </Form.Item>
         </Form>
-      </div>
-    </div>
+      
+    </main>
 
   );
 };

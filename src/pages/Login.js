@@ -5,8 +5,9 @@ import '../css/styles.css';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, myMap} from "react-router-dom";
 import Swal from 'sweetalert2';
+import { string,object } from 'yup';
 
 const Login = () => {
   const [teams, setKeys] = useState([]);
@@ -17,6 +18,12 @@ const Login = () => {
   useEffect(() => {
     fetchKeys();
   }, []);
+
+  let userSchema = object({
+    username: string().email().required(),
+    password: string().required()
+
+  });
 
   const fetchKeys = async () => {
     axios
@@ -29,9 +36,12 @@ const Login = () => {
         console.error(`There was an error retrieving the team list: ${error}`)
       );
   };
+  
 
-  const onFinish = values => {
+  const onFinish = async (values) => {
+    
     const { username, password } = values
+
     axios.post("http://localhost:4001/teams/validatePassword", { username, password })
       .then(res => {
         if (res.data.validation) {
@@ -42,41 +52,70 @@ const Login = () => {
             title: 'Login Existoso!',
             text: 'Puedes cerrar esta ventana',
           });
-          if (username === "kenia.picos@cetys.mx") {
-            navigate('/eventos/expo-ingenierias/votacion/votacion-kn');
-          } else if (username === "ulises.orozco@cetys.mx") {
-            navigate('/eventos/expo-ingenierias/votacion/votacion-ur');
-          } else if (username === "adan.hirales@cetys.mx") {
-            navigate('/eventos/expo-ingenierias/votacion/votacion-ah');
-          } else if (username === "vanessa.miranda@cetys.mx") {
-            navigate('/eventos/expo-ingenierias/votacion/votacion-vm');
-          } else if (username === "fermin.armenta@cetys.mx") {
-            navigate('/eventos/expo-ingenierias/votacion/votacion-fa');
-          } else if (username === "mauricio.odreman@cetys.mx") {
-            navigate('/eventos/expo-ingenierias/votacion/votacion-mo');
-          } else if (username === "marisela.martinez@cetys.mx") {
-            navigate('/eventos/expo-ingenierias/votacion/votacion-ma');
-          } else if (username === "xiomara.aguilar@cetys.mx") {
-            navigate('/eventos/expo-ingenierias/votacion/votacion-xa');
-          } else if (username === "jesus.camacho@cetys.mx") {
-            navigate('/eventos/expo-ingenierias/votacion/votacion-jc');
-          } else if (username === "nataly.medina@cetys.mx") {
-            navigate('/eventos/expo-ingenierias/votacion/votacion-nm');
-          } else if (username === "arturo.escoto@cetys.mx") {
-            navigate('/eventos/expo-ingenierias/votacion/votacion-as');
-          } else if (username === "benjamin.frias@cetys.mx") {
-            navigate('/eventos/expo-ingenierias/votacion/votacion-bf');
-          } else if (username === "marlon.gonzalez@cetys.mx") {
-            navigate('/eventos/expo-ingenierias/votacion/votacion-mg');
-          } else if (username === "gabriela.guzman@cetys.mx") {
-            navigate('/eventos/expo-ingenierias/votacion/votacion-gg');
-          } else if (username === "moises.sanchez@cetys.mx") {
-            navigate('/eventos/expo-ingenierias/votacion/votacion-ms');
-          }
+          
+          
 
-          else {
+          const emailMap = {
+            "kenia.picos@cetys.mx": '/eventos/expo-ingenierias/votacion/votacion-kn',
+            "ulises.orozco@cetys.mx": '/eventos/expo-ingenierias/votacion/votacion-ur',
+            "adan.hirales@cetys.mx": '/eventos/expo-ingenierias/votacion/votacion-ah',
+            "vanessa.miranda@cetys.mx": '/eventos/expo-ingenierias/votacion/votacion-vm',
+            "fermin.armenta@cetys.mx": '/eventos/expo-ingenierias/votacion/votacion-fa',
+            "mauricio.odreman@cetys.mx": '/eventos/expo-ingenierias/votacion/votacion-mo',
+            "marisela.martinez@cetys.mx": '/eventos/expo-ingenierias/votacion/votacion-ma',
+            "xiomara.aguilar@cetys.mx": '/eventos/expo-ingenierias/votacion/votacion-xa',
+            "jesus.camacho@cetys.mx": '/eventos/expo-ingenierias/votacion/votacion-jc',
+            "nataly.medina@cetys.mx": '/eventos/expo-ingenierias/votacion/votacion-nm',
+            "arturo.escoto@cetys.mx": '/eventos/expo-ingenierias/votacion/votacion-as',
+            "benjamin.frias@cetys.mx": '/eventos/expo-ingenierias/votacion/votacion-bf',
+            "marlon.gonzalez@cetys.mx": '/eventos/expo-ingenierias/votacion/votacion-mg',
+            "gabriela.guzman@cetys.mx": '/eventos/expo-ingenierias/votacion/votacion-gg',
+            "moises.sanchez@cetys.mx": '/eventos/expo-ingenierias/votacion/votacion-ms'
+          };
+
+          const navigationPath = emailMap[username];
+          if (navigationPath){
+            navigate(navigationPath);
+          }else{
             navigate('/eventos/expo-ingenierias/votacion/error');
           }
+        
+
+          // if (username === "kenia.picos@cetys.mx") {
+          //   navigate('/eventos/expo-ingenierias/votacion/votacion-kn');
+          // } else if (username === "ulises.orozco@cetys.mx") {
+          //   navigate('/eventos/expo-ingenierias/votacion/votacion-ur');
+          // } else if (username === "adan.hirales@cetys.mx") {
+          //   navigate('/eventos/expo-ingenierias/votacion/votacion-ah');
+          // } else if (username === "vanessa.miranda@cetys.mx") {
+          //   navigate('/eventos/expo-ingenierias/votacion/votacion-vm');
+          // } else if (username === "fermin.armenta@cetys.mx") {
+          //   navigate('/eventos/expo-ingenierias/votacion/votacion-fa');
+          // } else if (username === "mauricio.odreman@cetys.mx") {
+          //   navigate('/eventos/expo-ingenierias/votacion/votacion-mo');
+          // } else if (username === "marisela.martinez@cetys.mx") {
+          //   navigate('/eventos/expo-ingenierias/votacion/votacion-ma');
+          // } else if (username === "xiomara.aguilar@cetys.mx") {
+          //   navigate('/eventos/expo-ingenierias/votacion/votacion-xa');
+          // } else if (username === "jesus.camacho@cetys.mx") {
+          //   navigate('/eventos/expo-ingenierias/votacion/votacion-jc');
+          // } else if (username === "nataly.medina@cetys.mx") {
+          //   navigate('/eventos/expo-ingenierias/votacion/votacion-nm');
+          // } else if (username === "arturo.escoto@cetys.mx") {
+          //   navigate('/eventos/expo-ingenierias/votacion/votacion-as');
+          // } else if (username === "benjamin.frias@cetys.mx") {
+          //   navigate('/eventos/expo-ingenierias/votacion/votacion-bf');
+          // } else if (username === "marlon.gonzalez@cetys.mx") {
+          //   navigate('/eventos/expo-ingenierias/votacion/votacion-mg');
+          // } else if (username === "gabriela.guzman@cetys.mx") {
+          //   navigate('/eventos/expo-ingenierias/votacion/votacion-gg');
+          // } else if (username === "moises.sanchez@cetys.mx") {
+          //   navigate('/eventos/expo-ingenierias/votacion/votacion-ms');
+          // }
+
+          // else {
+          //   navigate('/eventos/expo-ingenierias/votacion/error');
+          // }
 
         } else {
           Swal.fire({

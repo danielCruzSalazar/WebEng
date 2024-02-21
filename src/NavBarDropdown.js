@@ -3,10 +3,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-
+import './css/styles.css'
 import EXPOIng from './pages/EXPO-Ingenieria';
 import Laboratorio from './pages/Laboratorio';
-import Conocenos from './pages/Conocenos';
+import PaginaInicio from './pages/Main-page';
 import Layout from './pages/Layout.js';
 import Login from './pages/Login';
 import TeamViewer from './pages/TeamViewer';
@@ -27,40 +27,48 @@ import VotingMg from './pages/VoteMg'
 import VotingGg from './pages/VoteGg'
 import VotingMs from './pages/VoteMs'
 import NoRegister from './pages/Error-pages/U_cant_register'
+import { Row, Col } from 'react-bootstrap';
 
 function PrincipalNavBarDropdown() {
   return (
     <Router>
-      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary sticky-top shadow">
+       
         <Container>
-          <Navbar.Brand href="/eventos/expo-ingenierias">
+          
+          <Navbar.Brand href="/PaginaInicio">
             <img className="d-inline-block align-top"
               src="./cetys-logo.png" alt="logo"
               width="70" height="60"
             />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Toggle aria-controls="d-inline-block responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link as={Link} to={"/conocenos"}>CONÓCENOS</Nav.Link>
-              <NavDropdown title="EVENTOS" id="collapsible-nav-dropdown">
+              
+              <NavDropdown title="Eventos" id="collapsible-nav-dropdown">
+              </NavDropdown>
+              
                 {/* <NavDropdown.Item as={Link} to={"/eventos/expo-ingenierias"}>EXPO Ingenierías</NavDropdown.Item> */}
                 <NavDropdown title="EXPO Ingenierias " id="collapsible-nav-dropdown">
                   <NavDropdown.Item as={Link} to={"/eventos/expo-ingenierias"}>Inicio</NavDropdown.Item>
                   <NavDropdown.Item as={Link} to={"/eventos/expo-ingenierias/layout"}>Mapa</NavDropdown.Item>
                   <NavDropdown.Item as={Link} to={"/eventos/expo-ingenierias/votacion-resultados"}>Resultados Votación</NavDropdown.Item>
                   <NavDropdown.Item as={Link} to={"/teamviewer"}>Proyectos</NavDropdown.Item>
+                
+                </NavDropdown>
+                <NavDropdown title="Laboratorio" id="collapsible-nav-dropdown">
                 </NavDropdown>
                 {/* <NavDropdown.Item href="#eventos/3.2"> Evento 2</NavDropdown.Item>
               <NavDropdown.Item href="#eventos/3.3"> Evento 3</NavDropdown.Item> */}
-              </NavDropdown>
-              <Nav.Link as={Link} to={"/laboratorio"}>LABORATORIO</Nav.Link>
+              
+              {/* <Nav.Link as={Link} to={"/laboratorio"}>LABORATORIO</Nav.Link> */}
 
               {/* <Nav.Link as={Link} to={"/post"}>POST</Nav.Link> */}
             </Nav>
           </Navbar.Collapse>
           <Nav.Link as={Link} to="/user-login">
-            <img className="d-inline-block align-top"
+            <img className=""
               src="./user-icon2.png"
               alt="User Profile"
               width="35"
@@ -71,7 +79,7 @@ function PrincipalNavBarDropdown() {
       </Navbar>
       <div>
         <Routes>
-          <Route path="/conocenos" element={<Conocenos />} />
+          <Route path="/PaginaInicio" element={<PaginaInicio />} />
           <Route path="/eventos/expo-ingenierias" element={<EXPOIng />} />
           <Route path="/laboratorio" element={<Laboratorio />} />
           <Route path="/eventos/expo-ingenierias/layout" element={<Layout />} />

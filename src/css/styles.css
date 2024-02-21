@@ -32,3 +32,46 @@ body {
 .login-form-button {
   width: 100%;
 }
+
+
+.image-container {
+  width: 100%; /* Default width for both phone and laptop view */
+}
+
+/* Media query for phone view */
+@media only screen and (max-width: 600px) {
+  .image-container img {
+    height: 300px;
+  }
+}
+
+/* Media query for laptop view */
+@media only screen and (min-width: 601px) {
+  .image-container img {
+    height: 400px;
+  }
+}
+
+.user-icon {
+  
+}
+
+/* Media query to hide the user icon in phone view */
+@media only screen and (max-width: 600px) {
+  .user-icon-link {
+    display: none; 
+  }
+}
+
+
+
+/* Rectangle 23 */
+.rectangle-23{
+  position: absolute;
+  width: 121px;
+  height: 35px;
+  left: 215px;
+  top: 77px;
+
+}
+

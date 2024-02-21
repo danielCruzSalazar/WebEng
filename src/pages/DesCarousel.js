@@ -8,10 +8,11 @@ function DesCarousel() {
         <Col sm={12} md={6} className="order-md-1 order-2">
           <hr className="hr hr-blurry" />
           <div className="info-principal">
-            <p>Hora de inicio: 2:00 pm</p>
-            <p>Hora de finalización: 6:00 pm</p>
-            <p className="mt-4">El evento está dirigido a estudiantes, profesores y público general.</p>
+            {/* <p>Hora de inicio: 2:00 pm</p>
+            <p>Hora de finalización: 6:00 pm</p> */}
+            <p className="mt-4">"Te invitamos a un evento único dirigido a estudiantes, profesores y público en general, donde nuestros futuros ingenierios presentarán sus proyectos en la Expo ingeniería."</p>
           </div>
+          <hr className="hr hr-blurry" />
         </Col>
         <Col sm={12} md={6} className="order-md-2 order-1">
           <Carousel>

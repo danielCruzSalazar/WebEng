@@ -26,8 +26,8 @@ const GMapSection = () => {
             <p className="info-titulo text-center">Lugar</p>
             <div className="info-lugar">
               <p>Av. CETYS Universidad No. 4. Fracc. El Lago, Tijuana, Baja California, México, C.P. 22210</p>
-              <p>Entrada a público en general Evento sin costo</p>
-              <p>Para más información: kenia.picos@cetys.mx ulises.orozco@cetys.mx</p>
+              <p className="fw-medium">Entrada a público en general.</p>
+              <p className="fw-medium">Evento sin costo.</p>
             </div>
           </Col>
           <Col sm={8}>

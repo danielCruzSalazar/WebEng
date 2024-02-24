@@ -7,6 +7,7 @@ const helmet = require('helmet')
 
 // Import routes
 const teamsRouter = require('./routes/teams-route')
+const uploadRouter = require('./routes/upload-route')
 
 // Set default port for express app
 const PORT = process.env.PORT || 4001
@@ -24,6 +25,8 @@ app.use(bodyParser.json())
 
 // Implement teams route
 app.use('/teams', teamsRouter)
+app.use('/upload', uploadRouter)
+
 
 // Implement 500 error route
 app.use(function (err, req, res, next) {

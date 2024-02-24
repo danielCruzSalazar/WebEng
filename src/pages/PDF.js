@@ -8,7 +8,6 @@
 // npm install pdfjs-dist
 // npm install @react-pdf-viewer/core
 // npm i @react-pdf-viewer/default-layout
-
 import React, {useState} from "react"
 import axios from 'axios';
 
@@ -33,12 +32,18 @@ function PDFViewer() {
         let selectedFile=e.target.files[0];
         if(selectedFile){
             if(selectedFile&&fileType.includes(selectedFile.type)){
-                let reader = new FileReader();
-                    reader.readAsDataURL(selectedFile);
-                    reader.onloadend = (e) => {
-                        setPdfFile(e.target.result);
-                        setPdfFileError('');
-                    }
+                const reader = new FileReader();
+
+    // Define onload event handler
+    reader.onload = function(event) {
+        // Create a Blob object from the file content
+        const blob = new Blob([event.target.result], { type: "application/pdf" });
+       setPdfFile(blob)
+    };
+
+    // Read the file as ArrayBuffer
+    reader.readAsArrayBuffer(selectedFile);
+                    
             }
             else{
                 setPdfFile(null);
@@ -54,13 +59,15 @@ function PDFViewer() {
         e.preventDefault();
         if (pdfFile !== null) {
           try {
+            const FormData = require("form-data")
             const formData = new FormData();
-            formData.append('pdfFile', pdfFile);
+            console.log(pdfFile);
+            formData.append('file', pdfFile,"pdf.pdf");
       
-            const response = await axios.post('http://localhost:4001/uploadPdf', formData, {
-                headers: {
-                  'Content-Type': 'multipart/form-data'
-                }
+            const response = await axios.post('http://localhost:4001/upload/pdf', formData, {
+
+            headers: { 'Content-Type': 'multipart/form-data' }
+                
               });
               
       

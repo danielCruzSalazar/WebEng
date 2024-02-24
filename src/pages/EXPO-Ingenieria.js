@@ -15,15 +15,14 @@ class EXPOIng extends Component {
             <Col className="col-info-presentacion">
               <div className="info-presentacion text-center">
                 <p>
-                  Acompáñanos a ver la demostración de proyectos de alumnos de
-                  Ingeniería en áreas relacionadas a computación, electrónica, mecatrónica, mecánica, energías
-                  renovables, diseño gráfico digital e ingeniería industrial.
+                  "Únete a nosotros para descubrir las demostraciones de proyectos
+                  de estudiantes de Ingeniería"
                 </p>
               </div>
             </Col>
           </Row>
         </Container>
-        <DesCarousel />
+        <DesCarousel/>
         <GMapSection />
       </div>
     );

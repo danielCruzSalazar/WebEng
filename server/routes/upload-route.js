@@ -17,28 +17,18 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage ,limits: { fieldSize: 25 * 1024 * 1024 }
 })
 
-router.post('/pdf', upload.single('file'), (req, res) => {
-  // Verifica si se ha subido un archivo
-  /*
-  console.log(req)
-  console.log(req.body)
-  if (!req.file) {
-    return res.status(400).send('No se ha subido ningún archivo');
-  }
-
-  // Obtiene el nombre del archivo y el path donde se almacenó
-  const filename = req.file.originalname;
-  const path = req.file.path;
-  knex('pdfs')
-    .insert({ filename, path })
-    .then(() => {
-      res.status(200).send('PDF subido y registrado en la base de datos');
-    })
-    .catch((error) => {
-      console.error('Error al insertar en la base de datos:', error);
-      res.status(500).send('Error al guardar en la base de datos');
+router.post('/pdf', upload.single('file'), async (req, res) => {
+  try {
+    // Aquí puedes guardar la información del archivo en la base de datos usando Knex.js
+    const {filename, path } = req.file;
+    await knex('pdfs').insert({
+      filename: filename+".pdf",
+      path: path
     });
-    */
     res.status(200).send('PDF subido y registrado en la base de datos');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error al subir el PDF y registrar en la base de datos');
+  }
 });
 module.exports = router;

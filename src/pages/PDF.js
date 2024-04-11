@@ -96,17 +96,6 @@ function PDFViewer() {
                 </button>
             </form>
             <br></br>
-            <h4>View PDF</h4>
-            <div className='pdf-container'>
-                {/* En esta seccion del codigo ocurria un error al correrlo debido a que la version de
-                pdfjs-dist no era la misma que el de la api entonces se tiene que verificar que sean
-                la misma version ambos para que corra correctamente, aqui ↓ se le puede modificar la 
-                version al pdfjs-dist para que sea la misma que la de la api que el mensaje de error arroje. */}
-                {viewPdf&&<><Worker workerUrl="https://unpkg.com/pdfjs-dist/build/pdf.worker.min.js">
-                    <Viewer fileUrl={viewPdf} plugins={[defaultLayoutPluginInstance]}/></Worker></>}
-
-                    {!viewPdf&&<>No PDF File Selected</>}
-            </div>
         </div>
     )
 }
